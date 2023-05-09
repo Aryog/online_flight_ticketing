@@ -1,4 +1,5 @@
 import 'package:booktickets/widgets/column_layout.dart';
+import 'package:booktickets/widgets/layout_builder_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:booktickets/utils/app_layout.dart';
 import 'package:booktickets/utils/app_styles.dart';
@@ -143,28 +144,11 @@ class TicketView extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: LayoutBuilder(builder:
-                        (BuildContext context, BoxConstraints constraints) {
-                      return Flex(
-                        direction: Axis.horizontal,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(
-                            ((constraints.maxWidth) / 15).floor(),
-                            (index) => SizedBox(
-                                  width: 5,
-                                  height: 1,
-                                  child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                    color: isColor == null
-                                        ? Colors.white
-                                        : Colors.grey.shade300,
-                                  )),
-                                )),
-                      );
-                    }),
-                  ),
+                      padding: const EdgeInsets.all(12.0),
+                      child: AppLayoutBuilderWidget(
+                        isColor: isColor,
+                        sections: 20,
+                      )),
                 ),
                 SizedBox(
                   height: AppLayout.getHeight(20),
